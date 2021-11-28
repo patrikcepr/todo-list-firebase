@@ -7,6 +7,7 @@ const DeleteButton = styled.button`
   border: none;
   opacity: 0.5;
   display: none;
+  cursor: pointer;
 `;
 
 export default DeleteButton;

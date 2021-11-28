@@ -23,11 +23,9 @@ const InputTasks = (props) => {
 
     const task = {
       task: taskRef.current.value,
-      id: Math.random().toString(),
     };
 
     props.onAddTask(task);
-    console.log(task);
 
     taskRef.current.value = '';
   };

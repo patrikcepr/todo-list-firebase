@@ -12,27 +12,19 @@ const Ul = styled.ul`
 `;
 
 const ListTasks = (props) => {
-  const onMouseOverHandler = (id) => {
-    console.log(id);
-  };
-
-  const deleteTaskHandler = (id) => {
-    console.log(props.tasks);
-    console.log(`I want to delete ${id}`);
-  };
+  // const onMouseOverHandler = (id) => {
+  //   console.log(id);
+  // };
 
   // const reversedTasks = [...props.tasks].reverse();
-  const tasks = props.tasks.map((item, i) => {
+  const tasks = props.tasks.map(({ task, id }) => {
     return (
       <Task
-        key={item.id}
-        id={item.id}
-        onMouseOver={onMouseOverHandler.bind(null, item.id)}
+        key={id}
+        // onMouseOver={onMouseOverHandler.bind(null, id)}
       >
-        {(item = item.task)}
-        <DeleteButton onClick={deleteTaskHandler.bind(null, props.id)}>
-          X
-        </DeleteButton>
+        {task}
+        <DeleteButton onClick={props.onDelete.bind(null, id)}>X</DeleteButton>
       </Task>
     );
   });
