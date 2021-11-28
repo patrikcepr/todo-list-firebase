@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 const Card = styled.div`
   border-radius: 4px;
-  width: 60%;
+  width: 40%;
+  min-width: 450px;
   background-color: chocolate;
   margin: auto;
   padding: 2rem;

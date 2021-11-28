@@ -10,7 +10,7 @@ const Form = styled.form`
   display: flex;
   gap: 1rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
   }
 `;
@@ -32,8 +32,12 @@ const InputTasks = (props) => {
 
   return (
     <Form onSubmit={submitHandler}>
-      <Input ref={taskRef} placeholder='Add new task' required />
-      <Button>Add New Task</Button>
+      <Input
+        ref={taskRef}
+        placeholder="Let's not forget to do this..."
+        required
+      />
+      {props.tasks.length < 20 && <Button>Add New Task</Button>}
     </Form>
   );
 };

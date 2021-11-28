@@ -3,7 +3,6 @@ import Header from './components/Layout/Header/Header';
 import Card from './components/UI/Card/Card';
 import InputTasks from './components/Things/InputTasks';
 import ListTasks from './components/Things/ListTasks';
-import Button from './components/UI/Button/Button';
 
 import './App.css';
 
@@ -11,12 +10,6 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  // const addTaskHandler = (task) => {
-  //   console.log(task);
-  //   setTasks((prevState) => [...prevState, task]);
-  //   console.log(tasks);
-  // };
 
   const fetchTasksHandler = useCallback(async () => {
     setIsLoading(true);
@@ -103,8 +96,7 @@ function App() {
     <div className='App'>
       <Header title='Things to Do...' />
       <Card>
-        <InputTasks onAddTask={addTaskHandler} />
-        <Button onClick={fetchTasksHandler}>Get tasks</Button>
+        <InputTasks tasks={tasks} onAddTask={addTaskHandler} />
         <section>{content}</section>
       </Card>
     </div>

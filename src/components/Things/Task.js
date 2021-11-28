@@ -4,13 +4,13 @@ import styled, { keyframes } from 'styled-components';
 
 const moveInTopRot = keyframes`
   0% {
-    opacity: 0;
+    opacity: 0.1;
     transform: translateY(-50px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
   }
   
   50% {
-    opacity: 0.7;
+    opacity: 0.4;
     transform: rotateX(0.5turn);
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2); 
   }
@@ -25,7 +25,7 @@ const moveInTopRot = keyframes`
 const Task = styled.li`
   color: brown;
   background-color: burlywood;
-  padding: 1rem;
+  padding: 2rem;
   margin: 1rem 0;
   font-size: 1.1rem;
   font-weight: 700;
@@ -36,7 +36,8 @@ const Task = styled.li`
   animation: ${moveInTopRot} 1.2s;
 
   &:hover ${DeleteButton} {
-    display: inline-block;
+    visibility: visible;
+    opacity: 0.7;
   }
 `;
 
