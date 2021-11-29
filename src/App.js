@@ -6,7 +6,7 @@ import ListTasks from './components/Things/ListTasks';
 import './App.css';
 
 //firebase
-import db from './util/firebaseConfig';
+import db from './firebaseConfig';
 import { ref, onValue, set, remove } from '@firebase/database';
 
 function App() {
