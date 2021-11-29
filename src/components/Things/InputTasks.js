@@ -5,6 +5,7 @@ import Button from '../UI/Button/Button';
 
 import styled from 'styled-components';
 
+//unique id module
 import uuid from 'react-uuid';
 
 const Form = styled.form`
@@ -24,7 +25,7 @@ const InputTasks = (props) => {
     event.preventDefault();
 
     const task = {
-      id: uuid(),
+      id: `${Date.now()}-${uuid()}`,
       task: taskRef.current.value,
       complete: false,
     };

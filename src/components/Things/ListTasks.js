@@ -31,7 +31,7 @@ const ListTasks = (props) => {
   // };
 
   // const reversedTasks = [...props.tasks].reverse();
-  const tasks = props.tasks.map(({ task, id }) => {
+  const tasks = props.tasks.map(({ task, id, complete }) => {
     return (
       <Task
         key={id}

@@ -24,6 +24,7 @@ function App() {
         loadedTasks.push({
           id: key,
           task: data[key].task,
+          complete: data[key].complete,
         });
       }
 
