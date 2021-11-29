@@ -1,4 +1,5 @@
 import DeleteButton from '../UI/Button/DeleteButton';
+import CompletedButton from '../UI/Button/CompletedButton';
 
 import styled, { keyframes } from 'styled-components';
 
@@ -12,7 +13,7 @@ const moveInTopRot = keyframes`
   50% {
     opacity: 0.4;
     transform: rotateX(0.5turn);
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.2); 
   }
   
   100% {
@@ -23,19 +24,24 @@ const moveInTopRot = keyframes`
 `;
 
 const Task = styled.li`
-  color: brown;
-  background-color: burlywood;
+  color: ${(props) => (props.complete ? 'darkgrey' : 'brown')};
+  background-color: ${(props) => (props.complete ? 'green' : 'burlywood')};
   padding: 2rem;
   margin: 1rem 0;
   font-size: 1.1rem;
   font-weight: 700;
   text-align: left;
+  text-decoration: ${(props) => (props.complete ? 'line-through' : 'none')};
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
   animation: ${moveInTopRot} 1.2s;
 
   &:hover ${DeleteButton} {
+    visibility: visible;
+    opacity: 0.7;
+  }
+  &:hover ${CompletedButton} {
     visibility: visible;
     opacity: 0.7;
   }

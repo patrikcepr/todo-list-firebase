@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 
 const Card = styled.div`
-  border-radius: 4px;
-  width: 40%;
-  min-width: 450px;
-  background-color: chocolate;
-  margin: auto;
-  padding: 2rem;
-  padding-bottom: 3rem;
+  padding: 1rem;
+  overflow: hidden;
+  margin: 2rem auto;
+  width: 85%;
+  max-width: 550px;
   background-color: khaki;
+  border-radius: 4px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
 `;
 
 export default Card;

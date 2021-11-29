@@ -16,10 +16,10 @@ const animatedGradient = keyframes`
 `;
 
 const Button = styled.button`
+  width: 60%;
   color: brown;
   background-color: burlywood;
-  /* text-transform: uppercase; */
-  padding: 15px 60px;
+  padding: 1rem 2rem;
   border-radius: 4px;
   display: inline-block;
   transition: all 0.2s ease-out;
@@ -27,6 +27,10 @@ const Button = styled.button`
   border: 1px solid brown;
   font-size: 1rem;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 
   &:hover {
     transform: translateY(-3px);

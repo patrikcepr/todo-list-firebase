@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, Fragment } from 'react';
 
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
@@ -9,11 +9,10 @@ import styled from 'styled-components';
 import uuid from 'react-uuid';
 
 const Form = styled.form`
-  width: 100%;
   display: flex;
   gap: 1rem;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     flex-direction: column;
   }
 `;
@@ -38,13 +37,18 @@ const InputTasks = (props) => {
   return (
     <Form onSubmit={submitHandler}>
       {props.tasks.length < 6 && (
-        <Input
-          ref={taskRef}
-          placeholder="Let's not forget to do this..."
-          required
-        />
+        <Fragment>
+          <Input
+            ref={taskRef}
+            placeholder="Let's not forget to do this..."
+            required
+          />
+          <Button>Add New Task</Button>
+        </Fragment>
       )}
-      {props.tasks.length < 6 && <Button>Add New Task</Button>}
+      {props.tasks.length === 6 && (
+        <h2>Only six tasks are allowed in demo mode.</h2>
+      )}
     </Form>
   );
 };

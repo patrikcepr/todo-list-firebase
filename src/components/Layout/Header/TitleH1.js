@@ -5,6 +5,7 @@ const TitleH1 = styled.h1`
   margin-top: 0;
   color: brown;
   background-color: burlywood;
+  text-align: center;
 `;
 
 export default TitleH1;
