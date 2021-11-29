@@ -5,6 +5,8 @@ import Button from '../UI/Button/Button';
 
 import styled from 'styled-components';
 
+import uuid from 'react-uuid';
+
 const Form = styled.form`
   width: 100%;
   display: flex;
@@ -22,7 +24,9 @@ const InputTasks = (props) => {
     event.preventDefault();
 
     const task = {
+      id: uuid(),
       task: taskRef.current.value,
+      complete: false,
     };
 
     props.onAddTask(task);
@@ -32,12 +36,14 @@ const InputTasks = (props) => {
 
   return (
     <Form onSubmit={submitHandler}>
-      <Input
-        ref={taskRef}
-        placeholder="Let's not forget to do this..."
-        required
-      />
-      {props.tasks.length < 20 && <Button>Add New Task</Button>}
+      {props.tasks.length < 6 && (
+        <Input
+          ref={taskRef}
+          placeholder="Let's not forget to do this..."
+          required
+        />
+      )}
+      {props.tasks.length < 6 && <Button>Add New Task</Button>}
     </Form>
   );
 };
