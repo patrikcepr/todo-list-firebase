@@ -3,16 +3,27 @@ import Header from './components/Layout/Header/Header';
 import Card from './components/UI/Card/Card';
 import InputTasks from './components/Things/InputTasks';
 import ListTasks from './components/Things/ListTasks';
+import Modal from './components/UI/Modal/Modal';
 import './App.css';
 
 //firebase access and crud methods
 import db from './firebaseConfig';
-import { ref, onValue, set, update, remove } from '@firebase/database';
+import {
+  ref,
+  onValue,
+  set,
+  update,
+  remove,
+  get,
+  child,
+} from '@firebase/database';
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [taskToEdit, setTaskToEdit] = useState({});
 
   const fetchTasksHandler = useCallback(() => {
     setIsLoading(true);
@@ -61,6 +72,46 @@ function App() {
     }
   }, []);
 
+  const updateTaskShowHandler = useCallback(
+    async (task, id) => {
+      //show modal, than fetch the one to update in modal
+      const dbRef = ref(db);
+      try {
+        await get(child(dbRef, `tasks/${id}`)).then((snapshot) => {
+          const task = {
+            id: id,
+            task: snapshot.val().task,
+            complete: snapshot.val().complete,
+          };
+          setTaskToEdit(task);
+          setShowModal(!showModal);
+        });
+      } catch (error) {
+        setError(error.message);
+      }
+    },
+    [showModal]
+  );
+
+  const hideModalHandler = () => {
+    setShowModal(!showModal);
+  };
+
+  const updateTaskHandler = useCallback(
+    async (task) => {
+      //actually update the task
+      try {
+        await update(ref(db, 'tasks/' + task.id), {
+          task: task.task,
+        });
+        setShowModal(!showModal);
+      } catch (error) {
+        setError(error.message);
+      }
+    },
+    [showModal]
+  );
+
   const deleteTaskHandler = (id) => {
     remove(ref(db, 'tasks/' + id));
   };
@@ -77,6 +128,7 @@ function App() {
         tasks={tasks}
         onDelete={deleteTaskHandler}
         onChangeComplete={completeHandler}
+        onShowTask={updateTaskShowHandler}
       />
     );
   }
@@ -96,6 +148,13 @@ function App() {
         <InputTasks tasks={tasks} onAddTask={addTaskHandler} />
         {content}
       </Card>
+      {showModal && (
+        <Modal
+          onUpdateTask={updateTaskHandler}
+          taskToEdit={taskToEdit}
+          onHideModal={hideModalHandler}
+        />
+      )}
     </div>
   );
 }

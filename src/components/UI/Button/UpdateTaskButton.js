@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const DeleteButton = styled.div`
+const UpdateButton = styled.div`
   border: none;
   opacity: 0;
   visibility: hidden;
@@ -9,4 +9,4 @@ const DeleteButton = styled.div`
   cursor: pointer;
 `;
 
-export default DeleteButton;
+export default UpdateButton;

@@ -3,12 +3,14 @@ import React from 'react';
 import Task from './Task';
 import DeleteButton from '../UI/Button/DeleteButton';
 import CompletedButton from '../UI/Button/CompletedButton';
+import UpdateTaskButton from '../UI/Button/UpdateTaskButton';
 
 import styled from 'styled-components';
 
 import deleteImage from '../../assets/delete.png';
 import checkedImageOff from '../../assets/check_off.png';
 import checkedImageOn from '../../assets/check_on.png';
+import editImage from '../../assets/editing.png';
 
 const Ul = styled.ul`
   list-style: none;
@@ -17,10 +19,9 @@ const Ul = styled.ul`
 `;
 
 const Icon = styled.div`
-  height: 25px;
-  width: 15px;
+  height: 22px;
   padding: 0;
-  padding-right: 1rem;
+  padding-right: 0.6rem;
 `;
 
 const IconImage = styled.img`
@@ -30,6 +31,7 @@ const IconImage = styled.img`
 
 const Controls = styled.div`
   display: flex;
+  gap: 0.3rem;
 `;
 
 const ListTasks = (props) => {
@@ -47,17 +49,25 @@ const ListTasks = (props) => {
       >
         {task}
         <Controls>
+          <UpdateTaskButton onClick={props.onShowTask.bind(null, task, id)}>
+            <Icon>
+              <IconImage src={editImage} alt='Edit' />
+            </Icon>
+          </UpdateTaskButton>
           <CompletedButton
             complete={complete}
             onClick={props.onChangeComplete.bind(null, id, complete)}
           >
             <Icon complete={complete}>
-              <IconImage src={complete ? checkedImageOn : checkedImageOff} />
+              <IconImage
+                src={complete ? checkedImageOn : checkedImageOff}
+                alt='Completed'
+              />
             </Icon>
           </CompletedButton>
           <DeleteButton onClick={props.onDelete.bind(null, id)}>
             <Icon>
-              <IconImage src={deleteImage} />
+              <IconImage src={deleteImage} alt='Delete' />
             </Icon>
           </DeleteButton>
         </Controls>
