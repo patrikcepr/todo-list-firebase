@@ -36,7 +36,7 @@ const InputTasks = (props) => {
 
   return (
     <Form onSubmit={submitHandler}>
-      {props.tasks.length < 7 && (
+      {props.tasks.length < 7 ? (
         <Fragment>
           <Input
             ref={taskRef}
@@ -45,8 +45,7 @@ const InputTasks = (props) => {
           />
           <Button>Add New Task</Button>
         </Fragment>
-      )}
-      {props.tasks.length === 7 && (
+      ) : (
         <h2>Only seven tasks are allowed in demo mode.</h2>
       )}
     </Form>

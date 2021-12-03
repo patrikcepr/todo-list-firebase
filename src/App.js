@@ -74,7 +74,7 @@ function App() {
 
   const updateTaskShowHandler = useCallback(
     async (task, id) => {
-      //show modal, than fetch the one to update in modal
+      //fetch the one to update, than show modal
       const dbRef = ref(db);
       try {
         await get(child(dbRef, `tasks/${id}`)).then((snapshot) => {

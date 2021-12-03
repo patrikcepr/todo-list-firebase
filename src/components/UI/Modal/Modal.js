@@ -59,7 +59,6 @@ const Modal = (props) => {
       complete: props.taskToEdit.complete,
     };
 
-    console.log(task);
     props.onUpdateTask(task);
   };
 
@@ -74,7 +73,9 @@ const Modal = (props) => {
           <Card>
             <Div>
               <Input defaultValue={props.taskToEdit.task} ref={taskRef} />
-              <Button onClick={updateHandler}>Update</Button>
+              <Button full onClick={updateHandler}>
+                Update
+              </Button>
             </Div>
           </Card>
         </ModalLayer>,
