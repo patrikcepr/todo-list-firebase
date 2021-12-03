@@ -16,7 +16,7 @@ const animatedGradient = keyframes`
 `;
 
 const Button = styled.button`
-  width: ${(props) => (props.full ? '100%' : '60%')};
+  width: ${(props) => (props.width ? props.width : '60%')};
   color: brown;
   background-color: burlywood;
   padding: 1rem 2rem;

@@ -2,6 +2,8 @@ import React from 'react';
 
 import Task from './Task';
 import UpdateButton from '../UI/Button/UpdateButton';
+import Icon from '../UI/Icon/Icon';
+import IconImage from '../UI/Icon/IconImage';
 
 import styled from 'styled-components';
 
@@ -14,19 +16,6 @@ const List = styled.ul`
   list-style: none;
   padding-left: 0;
   margin-top: 3rem;
-`;
-
-const Icon = styled.div`
-  height: 20px;
-  padding: 0;
-  padding-right: 0.5rem;
-`;
-
-const IconImage = styled.img`
-  height: 100%;
-  padding: 0;
-  filter: invert(23%) sepia(17%) saturate(6064%) hue-rotate(337deg)
-    brightness(101%) contrast(93%);
 `;
 
 const Controls = styled.div`

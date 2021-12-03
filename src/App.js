@@ -4,6 +4,8 @@ import Card from './components/UI/Card/Card';
 import InputTasks from './components/Things/InputTasks';
 import ListTasks from './components/Things/ListTasks';
 import Modal from './components/UI/Modal/Modal';
+import ResetButton from './components/UI/Button/ResetButton';
+
 import './App.css';
 
 //firebase access and crud methods
@@ -17,6 +19,8 @@ import {
   get,
   child,
 } from '@firebase/database';
+
+import defaultData from './assets/default-data';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -116,6 +120,13 @@ function App() {
     remove(ref(db, 'tasks/' + id));
   };
 
+  const purgeDb = () => remove(ref(db, 'tasks/'));
+
+  const resetToDefaultTasksHandler = () => {
+    purgeDb();
+    defaultData.map((task) => addTaskHandler(task));
+  };
+
   useEffect(() => {
     fetchTasksHandler();
   }, [fetchTasksHandler, addTaskHandler]);
@@ -143,6 +154,7 @@ function App() {
 
   return (
     <div className='App'>
+      <ResetButton onDefault={resetToDefaultTasksHandler} />
       <Header title='Things to Do...' />
       <Card>
         <InputTasks tasks={tasks} onAddTask={addTaskHandler} />
