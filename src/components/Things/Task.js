@@ -1,5 +1,3 @@
-import DeleteButton from '../UI/Button/DeleteButton';
-import CompletedButton from '../UI/Button/CompletedButton';
 import UpdateButton from '../UI/Button/UpdateButton';
 
 import styled, { keyframes } from 'styled-components';
@@ -41,14 +39,6 @@ const Task = styled.li`
   animation: ${moveInTopRot} 1.2s;
   transition: all 0.3s ease-out;
 
-  &:hover ${DeleteButton} {
-    visibility: visible;
-    opacity: 0.9;
-  }
-  &:hover ${CompletedButton} {
-    visibility: visible;
-    opacity: 0.9;
-  }
   &:hover ${UpdateButton} {
     visibility: visible;
     opacity: 0.9;
