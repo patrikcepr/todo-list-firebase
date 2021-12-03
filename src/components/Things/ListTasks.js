@@ -10,7 +10,7 @@ import checkedImageOff from '../../assets/check_off.png';
 import checkedImageOn from '../../assets/check_on.png';
 import editImage from '../../assets/editing.png';
 
-const Ul = styled.ul`
+const List = styled.ul`
   list-style: none;
   padding-left: 0;
   margin-top: 3rem;
@@ -67,7 +67,7 @@ const ListTasks = (props) => {
     );
   });
 
-  return <Ul>{tasks}</Ul>;
+  return <List>{tasks}</List>;
 };
 
 export default ListTasks;
