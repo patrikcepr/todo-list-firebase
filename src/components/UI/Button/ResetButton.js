@@ -17,6 +17,7 @@ const LeftCorner = styled.div`
   z-index: 20;
   float: left;
   background-color: rgba(222, 184, 135, 0.5);
+  border-radius: 4px;
 `;
 
 const ResetButton = (props) => {
@@ -24,7 +25,7 @@ const ResetButton = (props) => {
     <LeftCorner>
       <UpdateButton complete onClick={props.onDefault}>
         <Icon>
-          <IconImage src={resetImage} alt='Reset' />
+          <IconImage src={resetImage} alt='Reset to default' />
         </Icon>
       </UpdateButton>
     </LeftCorner>
