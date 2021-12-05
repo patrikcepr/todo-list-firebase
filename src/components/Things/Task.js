@@ -17,7 +17,7 @@ const Task = styled.li`
   text-align: left;
   text-decoration: ${(props) => (props.complete ? 'line-through' : 'none')};
   border-radius: 4px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px ${theme.transparentBackgroundLight};
   display: flex;
   justify-content: space-between;
   animation: ${moveInTopRot} 1.2s;

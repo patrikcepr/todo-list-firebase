@@ -7,13 +7,13 @@ import { animatedGradient } from '../Animations/Animations';
 const Button = styled.button`
   width: ${(props) => (props.width ? props.width : '60%')};
   color: ${theme.text};
-  background-color: ${theme.primaryLight};
+  background-color: ${theme.transparentBackgroundLight};
   padding: 1rem 2rem;
   border-radius: 4px;
   display: inline-block;
   transition: all 0.2s ease-out;
   position: relative;
-  border: 1px solid ${theme.primaryDark};
+  border: 1px solid ${theme.transparentBackgroundLight};
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
@@ -35,7 +35,7 @@ const Button = styled.button`
   &::after {
     content: '';
     display: inline-block;
-    background-color: ${theme.primaryLight};
+    background-color: ${theme.transparentBackgroundLight};
     width: 100%;
     height: 100%;
     border-radius: 4px;
@@ -75,7 +75,7 @@ const Button = styled.button`
   }
 
   &:hover::before {
-    animation: ${animatedGradient} 1.3s ease-out;
+    animation: ${animatedGradient} 1s ease-out;
   }
 `;
 

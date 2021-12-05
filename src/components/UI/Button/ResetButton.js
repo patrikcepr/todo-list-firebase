@@ -14,7 +14,7 @@ const LeftCorner = styled.div`
   width: 40px;
   height: 40px;
   padding: 10px 5px 0;
-  top: 5px;
+  top: 10px;
   left: 5px;
   z-index: 50;
   float: left;
