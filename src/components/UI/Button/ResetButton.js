@@ -14,7 +14,7 @@ const LeftCorner = styled.div`
   padding: 8px 6px 4px 8px;
   top: 1.3rem;
   left: 1rem;
-  z-index: 20;
+  z-index: 50;
   float: left;
   background-color: rgba(222, 184, 135, 0.5);
   border-radius: 4px;

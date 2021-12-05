@@ -21,7 +21,7 @@ const defaultData = [
   },
   {
     id: '1638518559639-1badb6f-4800-d8e2-b0f-d730215a3e6',
-    task: 'Max 7 tasks in this version',
+    task: '10 tasks limit in demo version',
     complete: false,
   },
   {

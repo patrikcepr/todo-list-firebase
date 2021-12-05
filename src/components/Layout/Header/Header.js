@@ -1,13 +1,21 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
 import TitleH1 from './TitleH1';
+
+const HeaderDiv = styled.header`
+  background-color: burlywood;
+`;
 
 const Header = (props) => {
   return (
-    <header>
-      <TitleH1>{props.title}</TitleH1>
+    <HeaderDiv>
+      <TitleH1 animation title={props.title}>
+        {props.title}
+      </TitleH1>
       {props.children}
-    </header>
+    </HeaderDiv>
   );
 };
 

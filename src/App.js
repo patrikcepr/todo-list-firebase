@@ -28,6 +28,7 @@ function App() {
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [taskToEdit, setTaskToEdit] = useState({});
+  const [cardIsAnimated, setCardIsAnimated] = useState(false);
 
   const fetchTasksHandler = useCallback(() => {
     setIsLoading(true);
@@ -39,11 +40,11 @@ function App() {
         const data = snapshot.val();
         const loadedTasks = [];
 
-        for (const key in data) {
+        for (const task in data) {
           loadedTasks.push({
-            id: key,
-            task: data[key].task,
-            complete: data[key].complete,
+            id: task,
+            task: data[task].task,
+            complete: data[task].complete,
           });
         }
 
@@ -125,6 +126,10 @@ function App() {
   const resetToDefaultTasksHandler = () => {
     purgeDb();
     defaultData.map((task) => addTaskHandler(task));
+    setCardIsAnimated(true);
+    setTimeout(() => {
+      setCardIsAnimated(false);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -156,7 +161,7 @@ function App() {
     <div className='App'>
       <ResetButton onDefault={resetToDefaultTasksHandler} />
       <Header title='Things to Do...' />
-      <Card>
+      <Card animation={cardIsAnimated}>
         <InputTasks tasks={tasks} onAddTask={addTaskHandler} />
         {content}
       </Card>
