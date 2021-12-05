@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import theme from '../../UI/Theme/Theme';
 
 import { shadows } from '../../UI/Animations/Animations';
 
@@ -7,7 +8,7 @@ const TitleH1 = styled.h1`
   overflow: hidden;
   padding: 1rem;
   margin-top: 0;
-  color: brown;
+  color: ${theme.text};
   z-index: 5;
   text-align: center;
 

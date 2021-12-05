@@ -15,6 +15,26 @@ export const animatedGradient = keyframes`
   }
   `;
 
+export const moveInTopRot = keyframes`
+  0% {
+    opacity: 0.1;
+    transform: translateY(-50px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); 
+  }
+  
+  50% {
+    opacity: 0.4;
+    transform: rotateX(0.5turn);
+    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.2); 
+  }
+  
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+`;
+
 export const flip = keyframes`
     0% {
       transform: rotateZ(0deg) rotateY(0);

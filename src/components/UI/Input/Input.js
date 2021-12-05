@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
+import theme from '../Theme/Theme';
+
 const Input = styled.input`
   width: calc(100% - 2rem);
   border: none;
-  border-bottom: 1px solid brown;
+  border-bottom: 3px solid ${theme.secondary};
   background-color: rgba(0, 0, 0, 0.05);
   padding: 1rem;
   font-size: 1rem;
@@ -11,7 +13,7 @@ const Input = styled.input`
 
   &:focus {
     outline: thin dotted;
-    border-bottom: 2px solid red;
+    border-bottom: 3px solid red;
   }
 `;
 

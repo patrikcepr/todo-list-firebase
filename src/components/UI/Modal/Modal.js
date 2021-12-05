@@ -7,6 +7,8 @@ import Button from '../Button/Button';
 
 import styled from 'styled-components';
 
+import theme from '../Theme/Theme';
+
 import { slideDown } from '../Animations/Animations';
 
 const ModalLayer = styled.div`
@@ -23,7 +25,7 @@ const ModalLayer = styled.div`
   }
 `;
 const Backdrop = styled.div`
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: ${theme.transparentBackground};
   position: fixed;
   top: 0;
   left: 0;
@@ -60,7 +62,7 @@ const Modal = (props) => {
       )}
       {ReactDom.createPortal(
         <ModalLayer autoFocus={false}>
-          <Card>
+          <Card color='#fff'>
             <Div>
               <Input
                 defaultValue={props.taskToEdit.task}

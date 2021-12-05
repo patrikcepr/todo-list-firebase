@@ -1,11 +1,12 @@
 import React from 'react';
 
 import styled from 'styled-components';
+import theme from '../../UI/Theme/Theme';
 
 import TitleH1 from './TitleH1';
 
 const HeaderDiv = styled.header`
-  background-color: burlywood;
+  background-color: ${theme.primaryLight};
 `;
 
 const Header = (props) => {

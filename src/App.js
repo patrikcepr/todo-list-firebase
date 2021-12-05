@@ -129,7 +129,7 @@ function App() {
     defaultData.map((task) => addTaskHandler(task));
     setTimeout(() => {
       setCardIsAnimated(false);
-    }, 3000);
+    }, 600);
   };
 
   useEffect(() => {

@@ -7,6 +7,8 @@ import resetImage from '../../../assets/reset.png';
 
 import styled from 'styled-components';
 
+import theme from '../Theme/Theme';
+
 const LeftCorner = styled.div`
   position: sticky;
   width: 40px;
@@ -16,7 +18,7 @@ const LeftCorner = styled.div`
   left: 5px;
   z-index: 50;
   float: left;
-  background-color: rgba(222, 184, 135, 0.5);
+  background-color: ${theme.primaryLight};
   border-radius: 4px;
 `;
 

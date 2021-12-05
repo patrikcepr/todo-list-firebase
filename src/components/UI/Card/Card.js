@@ -8,10 +8,10 @@ const Card = styled.div`
   margin: 2rem auto;
   width: 85%;
   max-width: 550px;
-  background-color: khaki;
+  background-color: ${(props) => (props.color ? props.color : '')};
   border-radius: 4px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  animation: ${(props) => (props.animation ? flip : '')} 1.5s ease-in-out;
+  /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); */
+  animation: ${(props) => (props.animation ? flip : '')} 0.5s ease-in-out;
 
   @media (min-width: 768px) {
     padding: 2rem;
