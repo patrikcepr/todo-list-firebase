@@ -77,7 +77,7 @@ function App() {
     }
   }, []);
 
-  const updateTaskShowHandler = useCallback(
+  const showUpdateModalHandler = useCallback(
     async (task, id) => {
       //fetch the one to update, than show modal
       const dbRef = ref(db);
@@ -124,9 +124,9 @@ function App() {
   const purgeDb = () => remove(ref(db, 'tasks/'));
 
   const resetToDefaultTasksHandler = () => {
+    setCardIsAnimated(true);
     purgeDb();
     defaultData.map((task) => addTaskHandler(task));
-    setCardIsAnimated(true);
     setTimeout(() => {
       setCardIsAnimated(false);
     }, 3000);
@@ -144,7 +144,7 @@ function App() {
         tasks={tasks}
         onDelete={deleteTaskHandler}
         onChangeComplete={completeHandler}
-        onShowTask={updateTaskShowHandler}
+        onShowTask={showUpdateModalHandler}
       />
     );
   }

@@ -20,7 +20,8 @@ const List = styled.ul`
 
 const Controls = styled.div`
   display: flex;
-  gap: 0.4rem;
+  gap: 0.5rem;
+  margin-left: 1rem;
 `;
 
 const ListTasks = (props) => {

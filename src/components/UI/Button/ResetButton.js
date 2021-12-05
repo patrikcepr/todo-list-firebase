@@ -3,17 +3,17 @@ import React from 'react';
 import UpdateButton from './UpdateButton';
 import IconImage from '../Icon/IconImage';
 import Icon from '../Icon/Icon';
-import resetImage from '../../../assets/circular-arrow.png';
+import resetImage from '../../../assets/reset.png';
 
 import styled from 'styled-components';
 
 const LeftCorner = styled.div`
   position: sticky;
-  width: 1.5rem;
-  height: 1.5rem;
-  padding: 8px 6px 4px 8px;
-  top: 1.3rem;
-  left: 1rem;
+  width: 40px;
+  height: 40px;
+  padding: 10px 5px 0;
+  top: 5px;
+  left: 5px;
   z-index: 50;
   float: left;
   background-color: rgba(222, 184, 135, 0.5);

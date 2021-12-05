@@ -5,19 +5,9 @@ import Card from '../Card/Card';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
-const slideDown = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-3rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-`;
+import { slideDown } from '../Animations/Animations';
 
 const ModalLayer = styled.div`
   position: fixed;
@@ -25,7 +15,7 @@ const ModalLayer = styled.div`
   left: 5%;
   width: 90%;
   z-index: 100;
-  animation: ${slideDown} 300ms ease-out forwards;
+  animation: ${slideDown} 0.5s ease-out forwards;
 
   @media (min-width: 768px) {
     width: 38rem;
@@ -69,11 +59,15 @@ const Modal = (props) => {
         document.getElementById('backdrop-root')
       )}
       {ReactDom.createPortal(
-        <ModalLayer>
+        <ModalLayer autoFocus={false}>
           <Card>
             <Div>
-              <Input defaultValue={props.taskToEdit.task} ref={taskRef} />
-              <Button full onClick={updateHandler}>
+              <Input
+                defaultValue={props.taskToEdit.task}
+                ref={taskRef}
+                autoFocus={true}
+              />
+              <Button width='100%' onClick={updateHandler}>
                 Update
               </Button>
             </Div>

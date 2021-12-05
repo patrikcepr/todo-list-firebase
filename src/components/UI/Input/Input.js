@@ -8,6 +8,11 @@ const Input = styled.input`
   padding: 1rem;
   font-size: 1rem;
   flex-grow: 2;
+
+  &:focus {
+    outline: thin dotted;
+    border-bottom: 2px solid red;
+  }
 `;
 
 export default Input;

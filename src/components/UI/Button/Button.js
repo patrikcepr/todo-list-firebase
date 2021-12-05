@@ -1,19 +1,6 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
-const animatedGradient = keyframes`
-  0% {
-    opacity: 0.3;
-    background-position:0% 50%;
-  }
-  50% {
-    opacity: 1;
-    background-position:100% 50%;
-  }
-  100% {
-    opacity: 0.7;
-    background-position:0% 50%;
-  }
-`;
+import { animatedGradient } from '../Animations/Animations';
 
 const Button = styled.button`
   width: ${(props) => (props.width ? props.width : '60%')};
@@ -82,7 +69,6 @@ const Button = styled.button`
     left: 0;
     z-index: 10;
     opacity: 0;
-    /* animation: ${animatedGradient} 1.3s ease-out infinite; */
   }
 
   &:hover::before {
