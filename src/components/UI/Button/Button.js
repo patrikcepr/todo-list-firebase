@@ -22,12 +22,12 @@ const Button = styled.button`
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px ${(props) => props.theme.shadow};
   }
 
   &:active {
     transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px ${(props) => props.theme.shadow};
   }
 
   &::after {

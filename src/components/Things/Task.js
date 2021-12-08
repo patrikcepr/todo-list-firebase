@@ -18,7 +18,7 @@ const Task = styled.li`
   border-radius: 4px;
   box-shadow: 0 ${(props) => (props.complete ? '0 3px' : '10px 20px')}
     /* ${(props) => (props.complete ? '3px' : '20px')} */
-    ${(props) => props.theme.transparentBackgroundLight};
+    ${(props) => props.theme.shadow};
   display: flex;
   justify-content: space-between;
   animation: ${moveInTopRot} 1s;

@@ -8,7 +8,8 @@ export const themeDefault = {
   text: '#000',
   mainBackground: '#fff',
   transparentBackground: '#000B',
-  transparentBackgroundLight: '#0005',
+  transparentBackgroundLight: '#CCCC',
+  shadow: '#0008',
 };
 
 export const themeGreenyGreeny = {
@@ -21,5 +22,6 @@ export const themeGreenyGreeny = {
   text: '#000',
   mainBackground: '#fff',
   transparentBackground: '#000B',
-  transparentBackgroundLight: '#0005',
+  transparentBackgroundLight: '#CCCC',
+  shadow: '#0005',
 };

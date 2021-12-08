@@ -31,11 +31,6 @@ const ListTasks = (props) => {
       <Task key={id} complete={complete} theme={props.theme}>
         {task}
         <Controls>
-          <UpdateButton onClick={props.onShowTask.bind(null, task, id)}>
-            <Icon>
-              <IconImage src={editImage} alt='Edit' />
-            </Icon>
-          </UpdateButton>
           <UpdateButton
             complete={complete}
             onClick={props.onChangeComplete.bind(null, id, complete)}
@@ -45,6 +40,11 @@ const ListTasks = (props) => {
                 src={complete ? checkedImageOn : checkedImageOff}
                 alt='Completed'
               />
+            </Icon>
+          </UpdateButton>
+          <UpdateButton onClick={props.onShowTask.bind(null, task, id)}>
+            <Icon>
+              <IconImage src={editImage} alt='Edit' />
             </Icon>
           </UpdateButton>
           <UpdateButton onClick={props.onDelete.bind(null, id)}>
