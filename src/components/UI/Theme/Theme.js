@@ -5,10 +5,10 @@ export const themeDefault = {
   secondary: '#00838f',
   secondaryLight: '#4fb3bf',
   secondaryDark: '#005662',
-  text: '#000',
+  text: '#fff',
   mainBackground: '#fff',
   transparentBackground: '#000B',
-  transparentBackgroundLight: '#CCCC',
+  transparentBackgroundLight: '#888C',
   shadow: '#0008',
 };
 

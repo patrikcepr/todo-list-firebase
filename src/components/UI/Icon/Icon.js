@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Icon = styled.div`
-  height: 30px;
+  height: 26px;
   padding: 0;
 
   @media (max-width: 768px) {

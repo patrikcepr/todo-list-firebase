@@ -6,7 +6,7 @@ import TitleH1 from './TitleH1';
 import styled from 'styled-components';
 
 const HeaderDiv = styled.header`
-  background-color: ${(props) => (props.theme ? props.theme.primaryLight : '')};
+  background-color: ${(props) => props.theme.primaryLight};
 `;
 
 const Header = (props) => {
@@ -16,6 +16,7 @@ const Header = (props) => {
         onDefault={props.onDefault}
         onTheme={props.onTheme}
         animation={props.animation}
+        theme={props.theme}
       />
       <TitleH1 theme={props.theme} animation title={props.title}>
         {props.title}

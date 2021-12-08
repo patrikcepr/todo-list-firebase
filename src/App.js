@@ -30,7 +30,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [taskToEdit, setTaskToEdit] = useState({});
   const [cardIsAnimated, setCardIsAnimated] = useState(false);
-  const [theme, setTheme] = useState(themeDefault);
+  const [theme, setTheme] = useState(true);
   const [isAnimated, setIsAnimated] = useState(false);
 
   const fetchTasksHandler = useCallback(() => {
@@ -138,9 +138,10 @@ function App() {
   const changeThemeHandler = () => {
     setIsAnimated(true);
     setTheme(!theme);
+    console.log(theme);
     setTimeout(() => {
       setIsAnimated(false);
-    }, 1000);
+    }, 200);
   };
 
   useEffect(() => {
@@ -170,7 +171,7 @@ function App() {
   }
 
   return (
-    <div className='App' theme={theme ? themeDefault : themeGreenyGreeny}>
+    <div className='App'>
       <Header
         theme={theme ? themeDefault : themeGreenyGreeny}
         title='Things to Do...'

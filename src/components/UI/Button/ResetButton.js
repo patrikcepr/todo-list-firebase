@@ -26,12 +26,21 @@ const ResetButton = (props) => {
     <LeftCorner>
       <UpdateButton complete onClick={props.onDefault}>
         <Icon>
-          <IconImage src={resetImage} alt='Reset to default' />
+          <IconImage
+            theme={props.theme}
+            src={resetImage}
+            alt='Reset to default'
+          />
         </Icon>
       </UpdateButton>
       <UpdateButton complete animation={props.animation}>
         <Icon>
-          <IconImage src={themeImage} onClick={props.onTheme} opacity='0.7' />
+          <IconImage
+            theme={props.theme}
+            src={themeImage}
+            onClick={props.onTheme}
+            opacity='0.9'
+          />
         </Icon>
       </UpdateButton>
     </LeftCorner>
