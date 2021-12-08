@@ -1,14 +1,13 @@
 import styled from 'styled-components';
-import theme from '../../UI/Theme/Theme';
 
 import { shadows } from '../../UI/Animations/Animations';
 
 const TitleH1 = styled.h1`
   position: relative;
   overflow: hidden;
-  padding: 1rem;
+  padding: 1rem 0;
   margin-top: 0;
-  color: ${theme.text};
+  color: ${(props) => props.theme.text};
   z-index: 5;
   text-align: center;
 
@@ -26,7 +25,6 @@ const TitleH1 = styled.h1`
     top: 1rem;
     left: 5rem;
     transform: translateX(3rem);
-    /* animation: ${shadows} 1.5s ease-in-out 0.1s; */
     animation: ${(props) => (props.animation ? shadows : '')} 1.5s ease-in-out
       0.1s;
     @media (max-width: 768px) {

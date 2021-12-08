@@ -39,11 +39,12 @@ const InputTasks = (props) => {
       {props.tasks.length < 10 ? (
         <Fragment>
           <Input
+            theme={props.theme}
             ref={taskRef}
             placeholder="Let's not forget to do this..."
             required
           />
-          <Button>Add New Task</Button>
+          <Button theme={props.theme}>Add New Task</Button>
         </Fragment>
       ) : (
         <h2>Only ten tasks are allowed in demo mode.</h2>

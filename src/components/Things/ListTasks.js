@@ -28,7 +28,7 @@ const ListTasks = (props) => {
   // const reversedTasks = [...props.tasks].reverse();
   const tasks = props.tasks.map(({ task, id, complete }) => {
     return (
-      <Task key={id} complete={complete}>
+      <Task key={id} complete={complete} theme={props.theme}>
         {task}
         <Controls>
           <UpdateButton onClick={props.onShowTask.bind(null, task, id)}>

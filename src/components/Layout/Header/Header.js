@@ -1,18 +1,23 @@
 import React from 'react';
 
-import styled from 'styled-components';
-import theme from '../../UI/Theme/Theme';
-
+import ResetButton from '../../UI/Button/ResetButton';
 import TitleH1 from './TitleH1';
 
+import styled from 'styled-components';
+
 const HeaderDiv = styled.header`
-  background-color: ${theme.primaryLight};
+  background-color: ${(props) => (props.theme ? props.theme.primaryLight : '')};
 `;
 
 const Header = (props) => {
   return (
-    <HeaderDiv>
-      <TitleH1 animation title={props.title}>
+    <HeaderDiv theme={props.theme}>
+      <ResetButton
+        onDefault={props.onDefault}
+        onTheme={props.onTheme}
+        animation={props.animation}
+      />
+      <TitleH1 theme={props.theme} animation title={props.title}>
         {props.title}
       </TitleH1>
       {props.children}

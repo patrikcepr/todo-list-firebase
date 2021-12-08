@@ -4,9 +4,10 @@ import Card from './components/UI/Card/Card';
 import InputTasks from './components/Things/InputTasks';
 import ListTasks from './components/Things/ListTasks';
 import Modal from './components/UI/Modal/Modal';
-import ResetButton from './components/UI/Button/ResetButton';
 
 import './App.css';
+
+import { themeDefault, themeGreenyGreeny } from './components/UI/Theme/Theme';
 
 //firebase access and crud methods
 import db from './firebaseConfig';
@@ -29,6 +30,8 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [taskToEdit, setTaskToEdit] = useState({});
   const [cardIsAnimated, setCardIsAnimated] = useState(false);
+  const [theme, setTheme] = useState(themeDefault);
+  const [isAnimated, setIsAnimated] = useState(false);
 
   const fetchTasksHandler = useCallback(() => {
     setIsLoading(true);
@@ -132,6 +135,14 @@ function App() {
     }, 600);
   };
 
+  const changeThemeHandler = () => {
+    setIsAnimated(true);
+    setTheme(!theme);
+    setTimeout(() => {
+      setIsAnimated(false);
+    }, 1000);
+  };
+
   useEffect(() => {
     fetchTasksHandler();
   }, [fetchTasksHandler, addTaskHandler]);
@@ -141,6 +152,7 @@ function App() {
   if (!isLoading && tasks.length > 0) {
     content = (
       <ListTasks
+        theme={theme ? themeDefault : themeGreenyGreeny}
         tasks={tasks}
         onDelete={deleteTaskHandler}
         onChangeComplete={completeHandler}
@@ -158,15 +170,29 @@ function App() {
   }
 
   return (
-    <div className='App'>
-      <ResetButton onDefault={resetToDefaultTasksHandler} />
-      <Header title='Things to Do...' />
-      <Card animation={cardIsAnimated}>
-        <InputTasks tasks={tasks} onAddTask={addTaskHandler} />
+    <div className='App' theme={theme ? themeDefault : themeGreenyGreeny}>
+      <Header
+        theme={theme ? themeDefault : themeGreenyGreeny}
+        title='Things to Do...'
+        onDefault={resetToDefaultTasksHandler}
+        onTheme={changeThemeHandler}
+        animation={isAnimated}
+      />
+      <Card
+        theme={theme ? themeDefault : themeGreenyGreeny}
+        // background='white'
+        animation={cardIsAnimated}
+      >
+        <InputTasks
+          theme={theme ? themeDefault : themeGreenyGreeny}
+          tasks={tasks}
+          onAddTask={addTaskHandler}
+        />
         {content}
       </Card>
       {showModal && (
         <Modal
+          theme={theme ? themeDefault : themeGreenyGreeny}
           onUpdateTask={updateTaskHandler}
           taskToEdit={taskToEdit}
           onHideModal={hideModalHandler}

@@ -38,9 +38,14 @@ export const moveInTopRot = keyframes`
 export const flip = keyframes`
     0% {
       transform: rotateZ(0deg) rotateY(0);
+      opacity: 0;
+    }
+    40% {
+      opacity: .6;
     }
     100% {
       transform: rotateZ(360deg) rotateY(-360deg);
+      opacity: 1;
     }
   `;
 
@@ -82,4 +87,14 @@ export const slideDown = keyframes`
     transform: translateY(0);
   }
 }
+`;
+
+export const rotate = keyframes`
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(180deg);
+    
+  }
 `;

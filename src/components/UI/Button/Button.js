@@ -1,25 +1,23 @@
 import styled from 'styled-components';
 
-import theme from '../Theme/Theme';
-
 import { animatedGradient } from '../Animations/Animations';
 
 const Button = styled.button`
   width: ${(props) => (props.width ? props.width : '60%')};
-  color: ${theme.text};
-  background-color: ${theme.transparentBackgroundLight};
+  color: ${(props) => props.theme.text};
+  background-color: ${(props) => props.theme.transparentBackgroundLight};
   padding: 1rem 2rem;
   border-radius: 4px;
   display: inline-block;
   transition: all 0.2s ease-out;
   position: relative;
-  border: 1px solid ${theme.transparentBackgroundLight};
+  border: 1px solid ${(props) => props.theme.transparentBackgroundLight};
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: ${(props) => (props.width ? props.width : '100%')};
   }
 
   &:hover {
@@ -35,7 +33,7 @@ const Button = styled.button`
   &::after {
     content: '';
     display: inline-block;
-    background-color: ${theme.transparentBackgroundLight};
+    background-color: ${(props) => props.theme.transparentBackgroundLight};
     width: 100%;
     height: 100%;
     border-radius: 4px;
@@ -59,7 +57,7 @@ const Button = styled.button`
       105deg,
       rgba(255, 255, 255, 0) 0%,
       rgba(255, 255, 255, 0) 44%,
-      ${theme.secondaryLight} 50%,
+      ${(props) => props.theme.secondaryLight} 50%,
       rgba(255, 255, 255, 0) 51%,
       rgba(255, 255, 255, 0) 100%
     );

@@ -1,14 +1,25 @@
-const theme = {
-  primary: '#f57f17',
-  primaryLight: '#ffb04c',
-  primaryDark: '#bc5100',
-  secondary: '#76ff03',
-  secondaryLight: '#b0ff57',
-  secondaryDark: '#32cb00',
+export const themeDefault = {
+  primary: '#1565c0',
+  primaryLight: '#5e92f3',
+  primaryDark: '#003c8f',
+  secondary: '#00838f',
+  secondaryLight: '#4fb3bf',
+  secondaryDark: '#005662',
   text: '#000',
   mainBackground: '#fff',
-  transparentBackground: 'rgba(0,0,0,0.7)',
-  transparentBackgroundLight: 'rgba(0,0,0,0.2)',
+  transparentBackground: '#000B',
+  transparentBackgroundLight: '#0005',
 };
 
-export default theme;
+export const themeGreenyGreeny = {
+  primary: '#64dd17',
+  primaryLight: '#9cff57',
+  primaryDark: '#1faa00',
+  secondary: '#81c784',
+  secondaryLight: '#b2fab4',
+  secondaryDark: '#519657',
+  text: '#000',
+  mainBackground: '#fff',
+  transparentBackground: '#000B',
+  transparentBackgroundLight: '#0005',
+};

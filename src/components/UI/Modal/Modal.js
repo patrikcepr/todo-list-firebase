@@ -7,8 +7,6 @@ import Button from '../Button/Button';
 
 import styled from 'styled-components';
 
-import theme from '../Theme/Theme';
-
 import { slideDown } from '../Animations/Animations';
 
 const ModalLayer = styled.div`
@@ -25,7 +23,7 @@ const ModalLayer = styled.div`
   }
 `;
 const Backdrop = styled.div`
-  background-color: ${theme.transparentBackground};
+  background-color: ${(props) => props.theme.transparentBackground};
   position: fixed;
   top: 0;
   left: 0;
@@ -57,19 +55,20 @@ const Modal = (props) => {
   return (
     <Fragment>
       {ReactDom.createPortal(
-        <Backdrop onClick={props.onHideModal} />,
+        <Backdrop onClick={props.onHideModal} theme={props.theme} />,
         document.getElementById('backdrop-root')
       )}
       {ReactDom.createPortal(
-        <ModalLayer autoFocus={false}>
-          <Card color='#fff'>
+        <ModalLayer theme={props.theme} autoFocus={false}>
+          <Card theme={props.theme}>
             <Div>
               <Input
+                theme={props.theme}
                 defaultValue={props.taskToEdit.task}
                 ref={taskRef}
                 autoFocus={true}
               />
-              <Button width='100%' onClick={updateHandler}>
+              <Button theme={props.theme} width='100%' onClick={updateHandler}>
                 Update
               </Button>
             </Div>
