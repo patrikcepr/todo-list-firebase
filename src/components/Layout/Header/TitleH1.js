@@ -11,6 +11,10 @@ const TitleH1 = styled.h1`
   z-index: 5;
   text-align: center;
 
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+  }
+
   &::after {
     /* content: '${(props) => (props.title ? props.title : '')}'; */
     content: 'In Shadows';

@@ -180,7 +180,6 @@ function App() {
       />
       <Card
         theme={theme ? themeDefault : themeGreenyGreeny}
-        // background='white'
         animation={cardIsAnimated}
       >
         <InputTasks
