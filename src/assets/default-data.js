@@ -1,7 +1,7 @@
 const defaultData = [
   {
     id: '1638504115351-07b814-bff1-8d47-8d3b-cceb5f42c7af',
-    task: 'Add,  Delete and Update Tasks',
+    task: 'Add, Update and Delete Tasks',
     complete: false,
   },
   {
@@ -16,7 +16,7 @@ const defaultData = [
   },
   {
     id: '1638504261752-7b2affc-852b-6e81-ef04-043803c4c40',
-    task: 'Done in React with Styled Components',
+    task: 'Done in React with Hooks and Styled Components',
     complete: false,
   },
   {

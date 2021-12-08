@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import UpdateButton from './UpdateButton';
 import IconImage from '../Icon/IconImage';
 import Icon from '../Icon/Icon';
-import resetImage from '../../../assets/reset.png';
 
+import AppContext from '../../../store/app-context';
+
+import resetImage from '../../../assets/reset.png';
 import themeImage from '../../../assets/1977475.png';
 
 import styled from 'styled-components';
@@ -22,23 +24,25 @@ const LeftCorner = styled.div`
 `;
 
 const ResetButton = (props) => {
+  const ctx = useContext(AppContext);
+
   return (
     <LeftCorner>
-      <UpdateButton complete onClick={props.onDefault}>
+      <UpdateButton visible onClick={ctx.onDefault}>
         <Icon>
           <IconImage
-            theme={props.theme}
+            theme={ctx.theme}
             src={resetImage}
             alt='Reset to default'
           />
         </Icon>
       </UpdateButton>
-      <UpdateButton complete animation={props.animation}>
+      <UpdateButton visible animation={ctx.isAnimated}>
         <Icon>
           <IconImage
-            theme={props.theme}
+            theme={ctx.theme}
             src={themeImage}
-            onClick={props.onTheme}
+            onClick={ctx.onTheme}
             opacity='0.9'
           />
         </Icon>

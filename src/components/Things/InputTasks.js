@@ -1,7 +1,9 @@
-import React, { useRef, Fragment } from 'react';
+import React, { useContext, useRef, Fragment } from 'react';
 
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
+
+import AppContext from '../../store/app-context';
 
 import styled from 'styled-components';
 
@@ -18,6 +20,8 @@ const Form = styled.form`
 `;
 
 const InputTasks = (props) => {
+  const ctx = useContext(AppContext);
+
   const taskRef = useRef('');
 
   const submitHandler = (event) => {
@@ -29,22 +33,22 @@ const InputTasks = (props) => {
       complete: false,
     };
 
-    props.onAddTask(task);
+    ctx.onAddTask(task);
 
     taskRef.current.value = '';
   };
 
   return (
     <Form onSubmit={submitHandler}>
-      {props.tasks.length < 10 ? (
+      {ctx.tasks.length < 10 ? (
         <Fragment>
           <Input
-            theme={props.theme}
+            theme={ctx.theme}
             ref={taskRef}
             placeholder="Let's not forget to do this..."
             required
           />
-          <Button theme={props.theme}>Add New Task</Button>
+          <Button theme={ctx.theme}>Add New Task</Button>
         </Fragment>
       ) : (
         <h2>Only ten tasks are allowed in demo mode.</h2>

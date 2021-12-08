@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Header from './components/Layout/Header/Header';
 import Card from './components/UI/Card/Card';
 import InputTasks from './components/Things/InputTasks';
@@ -7,197 +7,169 @@ import Modal from './components/UI/Modal/Modal';
 
 import './App.css';
 
-import { themeDefault, themeGreenyGreeny } from './components/UI/Theme/Theme';
+import AppContext from './store/app-context';
 
 //firebase access and crud methods
-import db from './firebaseConfig';
-import {
-  ref,
-  onValue,
-  set,
-  update,
-  remove,
-  get,
-  child,
-} from '@firebase/database';
+// import db from './firebaseConfig';
+// import {
+//   ref,
+//   onValue,
+//   set,
+//   update,
+//   remove,
+//   get,
+//   child,
+// } from '@firebase/database';
 
-import defaultData from './assets/default-data';
+// import defaultData from './assets/default-data';
+// import { themeDefault, themeGreenyGreeny } from './components/UI/Theme/Theme';
 
 function App() {
-  const [tasks, setTasks] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-  const [taskToEdit, setTaskToEdit] = useState({});
-  const [cardIsAnimated, setCardIsAnimated] = useState(false);
-  const [theme, setTheme] = useState(true);
-  const [isAnimated, setIsAnimated] = useState(false);
+  const ctx = useContext(AppContext);
 
-  const fetchTasksHandler = useCallback(() => {
-    setIsLoading(true);
-    setError(null);
+  // const [tasks, setTasks] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
+  // const [showModal, setShowModal] = useState(false);
+  // const [taskToEdit, setTaskToEdit] = useState({});
+  // const [cardIsAnimated, setCardIsAnimated] = useState(false);
 
-    try {
-      const tasksRef = ref(db, 'tasks');
-      onValue(tasksRef, (snapshot) => {
-        const data = snapshot.val();
-        const loadedTasks = [];
+  // const fetchTasksHandler = useCallback(() => {
+  //   setIsLoading(true);
+  //   setError(null);
 
-        for (const task in data) {
-          loadedTasks.push({
-            id: task,
-            task: data[task].task,
-            complete: data[task].complete,
-          });
-        }
+  //   try {
+  //     const tasksRef = ref(db, 'tasks');
+  //     onValue(tasksRef, (snapshot) => {
+  //       const data = snapshot.val();
+  //       const loadedTasks = [];
 
-        setTasks(loadedTasks);
-      });
-    } catch (error) {
-      setError(error.message);
-    }
-    setIsLoading(false);
-  }, []);
+  //       for (const task in data) {
+  //         loadedTasks.push({
+  //           id: task,
+  //           task: data[task].task,
+  //           complete: data[task].complete,
+  //         });
+  //       }
 
-  const addTaskHandler = useCallback(async (task) => {
-    try {
-      await set(ref(db, 'tasks/' + task.id), {
-        task: task.task,
-        complete: task.complete,
-      });
-    } catch (error) {
-      setError(error.message);
-    }
-  }, []);
+  //       setTasks(loadedTasks);
+  //     });
+  //   } catch (error) {
+  //     setError(error.message);
+  //   }
+  //   setIsLoading(false);
+  // }, []);
 
-  const completeHandler = useCallback(async (id, complete) => {
-    try {
-      await update(ref(db, 'tasks/' + id), {
-        complete: !complete,
-      });
-    } catch (error) {
-      setError(error.message);
-    }
-  }, []);
+  // const addTaskHandler = useCallback(async (task) => {
+  //   try {
+  //     await set(ref(db, 'tasks/' + task.id), {
+  //       task: task.task,
+  //       complete: task.complete,
+  //     });
+  //   } catch (error) {
+  //     setError(error.message);
+  //   }
+  // }, []);
 
-  const showUpdateModalHandler = useCallback(
-    async (task, id) => {
-      //fetch the one to update, than show modal
-      const dbRef = ref(db);
-      try {
-        await get(child(dbRef, `tasks/${id}`)).then((snapshot) => {
-          const task = {
-            id: id,
-            task: snapshot.val().task,
-            complete: snapshot.val().complete,
-          };
-          setTaskToEdit(task);
-          setShowModal(!showModal);
-        });
-      } catch (error) {
-        setError(error.message);
-      }
-    },
-    [showModal]
-  );
+  // const completeHandler = useCallback(async (id, complete) => {
+  //   try {
+  //     await update(ref(db, 'tasks/' + id), {
+  //       complete: !complete,
+  //     });
+  //   } catch (error) {
+  //     setError(error.message);
+  //   }
+  // }, []);
 
-  const hideModalHandler = () => {
-    setShowModal(!showModal);
-  };
+  // const showUpdateModalHandler = useCallback(
+  //   async (task, id) => {
+  //     //fetch the one to update, than show modal
+  //     const dbRef = ref(db);
+  //     try {
+  //       await get(child(dbRef, `tasks/${id}`)).then((snapshot) => {
+  //         const task = {
+  //           id: id,
+  //           task: snapshot.val().task,
+  //           complete: snapshot.val().complete,
+  //         };
+  //         setTaskToEdit(task);
+  //         setShowModal(!showModal);
+  //       });
+  //     } catch (error) {
+  //       setError(error.message);
+  //     }
+  //   },
+  //   [showModal]
+  // );
 
-  const updateTaskHandler = useCallback(
-    async (task) => {
-      //actually update the task
-      try {
-        await update(ref(db, 'tasks/' + task.id), {
-          task: task.task,
-        });
-        setShowModal(!showModal);
-      } catch (error) {
-        setError(error.message);
-      }
-    },
-    [showModal]
-  );
+  // const hideModalHandler = () => {
+  //   setShowModal(!showModal);
+  // };
 
-  const deleteTaskHandler = (id) => {
-    remove(ref(db, 'tasks/' + id));
-  };
+  // const updateTaskHandler = useCallback(
+  //   async (task) => {
+  //     //actually update the task
+  //     try {
+  //       await update(ref(db, 'tasks/' + task.id), {
+  //         task: task.task,
+  //       });
+  //       setShowModal(!showModal);
+  //     } catch (error) {
+  //       setError(error.message);
+  //     }
+  //   },
+  //   [showModal]
+  // );
 
-  const purgeDb = () => remove(ref(db, 'tasks/'));
+  // const deleteTaskHandler = (id) => {
+  //   remove(ref(db, 'tasks/' + id));
+  // };
 
-  const resetToDefaultTasksHandler = () => {
-    setCardIsAnimated(true);
-    purgeDb();
-    defaultData.map((task) => addTaskHandler(task));
-    setTimeout(() => {
-      setCardIsAnimated(false);
-    }, 600);
-  };
+  // const purgeDb = () => remove(ref(db, 'tasks/'));
 
-  const changeThemeHandler = () => {
-    setIsAnimated(true);
-    setTheme(!theme);
-    console.log(theme);
-    setTimeout(() => {
-      setIsAnimated(false);
-    }, 200);
-  };
+  // const resetToDefaultTasksHandler = () => {
+  //   setCardIsAnimated(true);
+  //   purgeDb();
+  //   defaultData.map((task) => addTaskHandler(task));
+  //   setTimeout(() => {
+  //     setCardIsAnimated(false);
+  //   }, 600);
+  // };
 
-  useEffect(() => {
-    fetchTasksHandler();
-  }, [fetchTasksHandler, addTaskHandler]);
+  // useEffect(() => {
+  //   fetchTasksHandler();
+  // }, [fetchTasksHandler, addTaskHandler]);
 
   let content = <h2>Data is loading....</h2>;
 
-  if (!isLoading && tasks.length > 0) {
+  if (!ctx.isLoading && ctx.tasks.length > 0) {
     content = (
       <ListTasks
-        theme={theme ? themeDefault : themeGreenyGreeny}
-        tasks={tasks}
-        onDelete={deleteTaskHandler}
-        onChangeComplete={completeHandler}
-        onShowTask={showUpdateModalHandler}
+        theme={ctx.theme}
+        tasks={ctx.tasks}
+        onDelete={ctx.onDelete}
+        onChangeComplete={ctx.onChangeComplete}
+        onShowTask={ctx.onShowTask}
       />
     );
   }
 
-  if (!isLoading && tasks.length === 0 && !error) {
+  if (!ctx.isLoading && ctx.tasks.length === 0 && !ctx.error) {
     content = <h2>No data received</h2>;
   }
 
-  if (error) {
-    content = <h2>{error}</h2>;
+  if (ctx.error) {
+    content = <h2>{ctx.error}</h2>;
   }
 
   return (
     <div className='App'>
-      <Header
-        theme={theme ? themeDefault : themeGreenyGreeny}
-        title='Things to Do...'
-        onDefault={resetToDefaultTasksHandler}
-        onTheme={changeThemeHandler}
-        animation={isAnimated}
-      />
-      <Card
-        theme={theme ? themeDefault : themeGreenyGreeny}
-        animation={cardIsAnimated}
-      >
-        <InputTasks
-          theme={theme ? themeDefault : themeGreenyGreeny}
-          tasks={tasks}
-          onAddTask={addTaskHandler}
-        />
+      <Header title='Things to Do...' />
+      <Card theme={ctx.theme} animation={ctx.cardIsAnimated}>
+        <InputTasks />
         {content}
       </Card>
-      {showModal && (
-        <Modal
-          theme={theme ? themeDefault : themeGreenyGreeny}
-          onUpdateTask={updateTaskHandler}
-          taskToEdit={taskToEdit}
-          onHideModal={hideModalHandler}
-        />
-      )}
+      {ctx.showModal && <Modal />}
     </div>
   );
 }

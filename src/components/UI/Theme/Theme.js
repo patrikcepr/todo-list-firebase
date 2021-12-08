@@ -7,7 +7,7 @@ export const themeDefault = {
   secondaryDark: '#005662',
   text: '#fff',
   mainBackground: '#fff',
-  transparentBackground: '#000B',
+  transparentBackground: '#000D',
   transparentBackgroundLight: '#888C',
   shadow: '#0008',
 };
@@ -21,7 +21,7 @@ export const themeGreenyGreeny = {
   secondaryDark: '#519657',
   text: '#000',
   mainBackground: '#fff',
-  transparentBackground: '#000B',
+  transparentBackground: '#000D',
   transparentBackgroundLight: '#CCCC',
   shadow: '#0005',
 };

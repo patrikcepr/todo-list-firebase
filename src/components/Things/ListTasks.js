@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import Task from './Task';
 import UpdateButton from '../UI/Button/UpdateButton';
 import Icon from '../UI/Icon/Icon';
 import IconImage from '../UI/Icon/IconImage';
+
+import AppContext from '../../store/app-context';
 
 import styled from 'styled-components';
 
@@ -25,32 +27,33 @@ const Controls = styled.div`
 `;
 
 const ListTasks = (props) => {
+  const ctx = useContext(AppContext);
   // const reversedTasks = [...props.tasks].reverse();
   const tasks = props.tasks.map(({ task, id, complete }) => {
     return (
-      <Task key={id} complete={complete} theme={props.theme}>
+      <Task key={id} complete={complete} theme={ctx.theme}>
         {task}
         <Controls>
           <UpdateButton
-            complete={complete}
-            onClick={props.onChangeComplete.bind(null, id, complete)}
+            visible={complete}
+            onClick={ctx.onChangeComplete.bind(null, id, complete)}
           >
-            <Icon complete={complete}>
+            <Icon>
               <IconImage
-                theme={props.theme}
+                theme={ctx.theme}
                 src={complete ? checkedImageOn : checkedImageOff}
                 alt='Completed'
               />
             </Icon>
           </UpdateButton>
-          <UpdateButton onClick={props.onShowTask.bind(null, task, id)}>
+          <UpdateButton onClick={ctx.onShowTask.bind(null, task, id)}>
             <Icon>
-              <IconImage theme={props.theme} src={editImage} alt='Edit' />
+              <IconImage theme={ctx.theme} src={editImage} alt='Edit' />
             </Icon>
           </UpdateButton>
-          <UpdateButton onClick={props.onDelete.bind(null, id)}>
+          <UpdateButton onClick={ctx.onDelete.bind(null, id)}>
             <Icon>
-              <IconImage theme={props.theme} src={deleteImage} alt='Delete' />
+              <IconImage theme={ctx.theme} src={deleteImage} alt='Delete' />
             </Icon>
           </UpdateButton>
         </Controls>

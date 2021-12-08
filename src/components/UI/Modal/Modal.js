@@ -1,9 +1,11 @@
-import React, { Fragment, useRef } from 'react';
+import React, { Fragment, useRef, useContext } from 'react';
 import ReactDom from 'react-dom';
 
 import Card from '../Card/Card';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+
+import AppContext from '../../../store/app-context';
 
 import styled from 'styled-components';
 
@@ -40,35 +42,37 @@ const Div = styled.div`
 `;
 
 const Modal = (props) => {
+  const ctx = useContext(AppContext);
+
   const taskRef = useRef('');
 
   const updateHandler = () => {
     const task = {
-      id: props.taskToEdit.id,
+      id: ctx.taskToEdit.id,
       task: taskRef.current.value,
-      complete: props.taskToEdit.complete,
+      complete: ctx.taskToEdit.complete,
     };
 
-    props.onUpdateTask(task);
+    ctx.onUpdateTask(task);
   };
 
   return (
     <Fragment>
       {ReactDom.createPortal(
-        <Backdrop onClick={props.onHideModal} theme={props.theme} />,
+        <Backdrop onClick={ctx.onHideModal} theme={ctx.theme} />,
         document.getElementById('backdrop-root')
       )}
       {ReactDom.createPortal(
-        <ModalLayer theme={props.theme} autoFocus={false}>
-          <Card theme={props.theme}>
+        <ModalLayer theme={ctx.theme} autoFocus={false}>
+          <Card theme={ctx.theme}>
             <Div>
               <Input
-                theme={props.theme}
-                defaultValue={props.taskToEdit.task}
+                theme={ctx.theme}
+                defaultValue={ctx.taskToEdit.task}
                 ref={taskRef}
                 autoFocus={true}
               />
-              <Button theme={props.theme} width='100%' onClick={updateHandler}>
+              <Button theme={ctx.theme} width='100%' onClick={updateHandler}>
                 Update
               </Button>
             </Div>
