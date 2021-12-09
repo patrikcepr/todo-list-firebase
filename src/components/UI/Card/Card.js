@@ -11,12 +11,13 @@ const Card = styled.div`
   background-color: ${(props) =>
     props.theme ? props.theme.primaryLight : 'white'};
   border-radius: 4px;
-  /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); */
-  animation: ${(props) => (props.animation ? flip : '')} 400ms ease-out;
+  animation: ${(props) => (props.animation ? flip : '')} 400ms ease-in-out;
   transform-style: preserve-3d;
   backface-visibility: visible;
 
   @media (min-width: 768px) {
+    width: 85%;
+    max-width: 1024px;
     padding: 2rem;
   }
 `;

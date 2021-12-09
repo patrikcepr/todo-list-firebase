@@ -18,6 +18,13 @@ import editImage from '../../assets/editing.png';
 const List = styled.ul`
   list-style: none;
   padding-left: 0;
+
+  @media (min-width: 768px) {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 `;
 
 const Flex = styled.div`
