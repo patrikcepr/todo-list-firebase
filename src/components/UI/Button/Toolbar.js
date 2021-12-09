@@ -37,13 +37,12 @@ const ToolBar = (props) => {
           />
         </Icon>
       </UpdateButton>
-      <UpdateButton visible animation={ctx.isAnimated}>
+      <UpdateButton visible onClick={ctx.onTheme} animation={ctx.isAnimated}>
         <Icon>
           <IconImage
             theme={ctx.theme}
             src={themeImage}
             alt='Change theme'
-            onClick={ctx.onTheme}
             opacity='0.9'
           />
         </Icon>

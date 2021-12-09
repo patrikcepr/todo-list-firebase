@@ -29,6 +29,21 @@ const defaultData = [
     task: 'Demo task',
     complete: false,
   },
+  {
+    id: '1639067827796-0815ad-e6-53d-318e-428e237322',
+    task: 'Demo task 2',
+    complete: true,
+  },
+  {
+    id: '1639067840068-c100f-6d2c-7ce3-24fd-1f8dfd3f585c',
+    task: 'Demo task 3',
+    complete: true,
+  },
+  {
+    id: '1639067851329-31b78ba-18d-d065-4c11-360a3803b2b',
+    task: 'Demo task 4',
+    complete: false,
+  },
 ];
 
 export default defaultData;

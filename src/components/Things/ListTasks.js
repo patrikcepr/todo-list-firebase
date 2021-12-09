@@ -31,10 +31,9 @@ const Flex = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 
   @media (min-width: 768px) {
-    flex-direction: row;
     justify-content: space-between;
   }
 `;

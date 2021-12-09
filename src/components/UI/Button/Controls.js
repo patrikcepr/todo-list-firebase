@@ -8,7 +8,7 @@ const Controls = styled.div`
   border-radius: 0.5rem;
   padding: 0.5rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     margin-left: 1rem;
     justify-self: flex-end;
     visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};

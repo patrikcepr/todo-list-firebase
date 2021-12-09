@@ -7,7 +7,7 @@ const UpdateButton = styled.div`
   transition: all 0.2s;
   cursor: pointer;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     opacity: ${(props) => (props.visible ? '1' : '0')};
     visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
   }

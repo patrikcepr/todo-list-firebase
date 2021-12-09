@@ -28,16 +28,29 @@ const Task = styled.li`
   transition: all 0.3s ease-out;
   @media (min-width: 768px) {
     margin: 0;
-    max-width: calc(100% / 2 - 4rem);
-    flex-grow: 2;
+    flex: 1;
+  }
+  @media (min-width: 1024px) {
+    max-width: calc(50% - 1rem);
+    flex: 2;
+  }
+
+  &:hover {
+    @media (hover: hover) and (pointer: fine) {
+      flex: 3;
+    }
   }
 
   &:hover ${UpdateButton} {
-    visibility: visible;
-    opacity: 0.9;
+    @media (min-width: 1024px) {
+      visibility: visible;
+      opacity: 0.9;
+    }
   }
   &:hover ${Controls} {
-    visibility: visible;
+    @media (min-width: 1024px) {
+      visibility: visible;
+    }
   }
 `;
 
