@@ -23,7 +23,7 @@ const LeftCorner = styled.div`
   gap: 0.5rem;
 `;
 
-const ResetButton = (props) => {
+const ToolBar = (props) => {
   const ctx = useContext(AppContext);
 
   return (
@@ -42,6 +42,7 @@ const ResetButton = (props) => {
           <IconImage
             theme={ctx.theme}
             src={themeImage}
+            alt='Change theme'
             onClick={ctx.onTheme}
             opacity='0.9'
           />
@@ -51,4 +52,4 @@ const ResetButton = (props) => {
   );
 };
 
-export default ResetButton;
+export default ToolBar;

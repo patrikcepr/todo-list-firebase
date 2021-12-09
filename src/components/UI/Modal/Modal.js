@@ -4,6 +4,7 @@ import ReactDom from 'react-dom';
 import Card from '../Card/Card';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import Form from '../Form/Form';
 
 import AppContext from '../../../store/app-context';
 
@@ -34,19 +35,14 @@ const Backdrop = styled.div`
   height: 100vh;
 `;
 
-const Div = styled.div`
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
-  align-items: center;
-`;
-
 const Modal = (props) => {
   const ctx = useContext(AppContext);
 
   const taskRef = useRef('');
 
-  const updateHandler = () => {
+  const updateHandler = (event) => {
+    event.preventDefault();
+
     const task = {
       id: ctx.taskToEdit.id,
       task: taskRef.current.value,
@@ -65,17 +61,21 @@ const Modal = (props) => {
       {ReactDom.createPortal(
         <ModalLayer theme={ctx.theme} autoFocus={false}>
           <Card theme={ctx.theme}>
-            <Div>
+            <Form
+              theme={ctx.theme}
+              onSubmit={updateHandler}
+              fDirection='column'
+            >
               <Input
                 theme={ctx.theme}
                 defaultValue={ctx.taskToEdit.task}
                 ref={taskRef}
                 autoFocus={true}
               />
-              <Button theme={ctx.theme} width='100%' onClick={updateHandler}>
+              <Button theme={ctx.theme} width='100%'>
                 Update
               </Button>
-            </Div>
+            </Form>
           </Card>
         </ModalLayer>,
         document.getElementById('overlay-root')

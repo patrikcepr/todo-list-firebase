@@ -1,7 +1,8 @@
 import React, { useContext, useRef, Fragment } from 'react';
 
 import Input from '../UI/Input/Input';
-import Button from '../UI/Button/Button';
+import RoundedButton from '../UI/Button/RoundedButton';
+// import Form from '../UI/Form/Form';
 
 import AppContext from '../../store/app-context';
 
@@ -10,14 +11,7 @@ import styled from 'styled-components';
 //unique id module
 import uuid from 'react-uuid';
 
-const Form = styled.form`
-  display: flex;
-  gap: 1rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
+const Form = styled.form``;
 
 const InputTasks = (props) => {
   const ctx = useContext(AppContext);
@@ -46,9 +40,10 @@ const InputTasks = (props) => {
             theme={ctx.theme}
             ref={taskRef}
             placeholder="Let's not forget to do this..."
+            rows='3'
             required
           />
-          <Button theme={ctx.theme}>Add New Task</Button>
+          <RoundedButton theme={ctx.theme}>+</RoundedButton>
         </Fragment>
       ) : (
         <h2>Only ten tasks are allowed in demo mode.</h2>

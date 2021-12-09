@@ -15,6 +15,21 @@ export const animatedGradient = keyframes`
   }
   `;
 
+export const flip = keyframes`
+    0% {
+      transform: rotateY(0deg);
+      opacity: 1;
+    }
+    50% {
+      transform: rotateY(180deg);
+      opacity: 0.1;
+    }
+    100% {
+      transform: rotateY(0deg);
+      opacity: 1;
+    }
+  `;
+
 export const moveInTopRot = keyframes`
   0% {
     opacity: 0.1;
@@ -33,19 +48,15 @@ export const moveInTopRot = keyframes`
     transform: translateY(0);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
-`;
+  `;
 
-export const flip = keyframes`
-    0% {
-      transform: rotateZ(0deg) rotateY(0);
-      opacity: 0;
+export const rotate = keyframes`
+    from {
+      transform: rotateY(0);
     }
-    40% {
-      opacity: .6;
-    }
-    100% {
-      transform: rotateZ(360deg) rotateY(-360deg);
-      opacity: 1;
+    to {
+      transform: rotateY(180deg);
+      
     }
   `;
 
@@ -87,14 +98,4 @@ export const slideDown = keyframes`
     transform: translateY(0);
   }
 }
-`;
-
-export const rotate = keyframes`
-  from {
-    transform: rotateY(0);
-  }
-  to {
-    transform: rotateY(180deg);
-    
-  }
 `;

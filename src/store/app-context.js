@@ -144,7 +144,7 @@ export const AppContextProvider = (props) => {
     defaultData.map((task) => addTaskHandler(task));
     setTimeout(() => {
       setCardIsAnimated(false);
-    }, 600);
+    }, 400);
   };
 
   const changeThemeHandler = () => {

@@ -7,7 +7,7 @@ const Button = styled.button`
   color: ${(props) => props.theme.text};
   background-color: ${(props) => props.theme.transparentBackgroundLight};
   padding: 1rem 2rem;
-  border-radius: 4px;
+  border-radius: 10px;
   display: inline-block;
   transition: all 0.2s ease-out;
   position: relative;
@@ -36,7 +36,7 @@ const Button = styled.button`
     background-color: ${(props) => props.theme.transparentBackgroundLight};
     width: 100%;
     height: 100%;
-    border-radius: 4px;
+    border-radius: 10px;
     position: absolute;
     top: 0;
     left: 0;
@@ -64,7 +64,6 @@ const Button = styled.button`
     background-size: 300% 100%;
     width: 100%;
     height: 100%;
-    border-radius: 4px;
     position: absolute;
     top: 0;
     left: 0;
