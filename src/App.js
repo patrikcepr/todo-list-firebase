@@ -5,11 +5,16 @@ import InputTasks from './components/Things/InputTasks';
 import ListTasks from './components/Things/ListTasks';
 import Modal from './components/UI/Modal/Modal';
 
+import { logEvent } from '@firebase/analytics';
+import { analytics } from './firebaseConfig';
+
 import './App.css';
 
 import AppContext from './store/app-context';
 
 function App() {
+  logEvent(analytics);
+
   const ctx = useContext(AppContext);
 
   let content = <h2>Data is loading....</h2>;
