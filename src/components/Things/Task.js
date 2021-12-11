@@ -29,7 +29,17 @@ const Task = styled.li`
   justify-content: space-between;
   align-items: center;
   animation: ${moveInTopRot} 1s;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.5s 0.5s ease-in-out;
+  cursor: pointer;
+
+  /* &:hover {
+  } */
+
+  @supports (transition: initial) {
+    /* CSS to use if transitions are supported */
+    transition: all 0.5s ease-in-out;
+  }
+
   @media (min-width: 768px) {
     margin: 0;
     width: calc(50% - 3.5rem);
@@ -38,11 +48,6 @@ const Task = styled.li`
   @media (min-width: 1024px) {
     width: calc(33% - 3.5rem);
     /* flex: 2; */
-  }
-
-  &:hover {
-    cursor: pointer;
-    transition: all 0.5s ease-in-out;
   }
 
   &:hover ${Toolbar} {
@@ -56,12 +61,15 @@ const Task = styled.li`
     visibility: visible;
   }
 
+  &:focus,
   &:hover ${TaskValue} {
     width: 100%;
-    transition: all 1s ease;
+    padding-right: 0.3rem;
+    overflow: auto;
     display: -webkit-box;
-    -webkit-line-clamp: unset;
+    -webkit-line-clamp: 8;
     -webkit-box-orient: vertical;
+    -webkit-overflow-scrolling: auto;
   }
 
   &:hover ${Flex} {
