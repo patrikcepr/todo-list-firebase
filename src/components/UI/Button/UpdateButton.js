@@ -6,11 +6,11 @@ const UpdateButton = styled.div`
   animation: ${(props) => (props.animation ? rotate : '')} 200ms ease-in-out;
   transition: all 0.2s;
   cursor: pointer;
+  opacity: ${(props) => (props.visible ? '1' : '0')};
+  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
 
-  @media (min-width: 1024px) {
-    opacity: ${(props) => (props.visible ? '1' : '0')};
-    visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
-  }
+  /* @media (min-width: 1024px) {
+  } */
 `;
 
 export default UpdateButton;

@@ -7,11 +7,11 @@ const Controls = styled.div`
   background-color: #0004;
   border-radius: 0.5rem;
   padding: 0.5rem;
+  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
 
   @media (min-width: 1024px) {
     margin-left: 1rem;
-    justify-self: flex-end;
-    visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
+    align-self: flex-end;
   }
 `;
 

@@ -1,5 +1,8 @@
 import UpdateButton from '../UI/Button/UpdateButton';
 import Controls from '../UI/Button/Controls';
+import Toolbar from '../UI/Toolbar/Toolbar';
+import TaskValue from './TaskValue';
+import Flex from '../UI/Flex/Flex';
 
 import styled from 'styled-components';
 
@@ -24,33 +27,45 @@ const Task = styled.li`
     ${(props) => props.theme.shadow};
   display: flex;
   justify-content: space-between;
+  align-items: center;
   animation: ${moveInTopRot} 1s;
-  transition: all 0.3s ease-out;
+  transition: all 0.5s ease-in-out;
   @media (min-width: 768px) {
     margin: 0;
-    flex: 1;
+    width: calc(50% - 3.5rem);
+    /* flex: 1; */
   }
   @media (min-width: 1024px) {
-    max-width: calc(50% - 1rem);
-    flex: 2;
+    width: calc(33% - 3.5rem);
+    /* flex: 2; */
   }
 
   &:hover {
-    @media (hover: hover) and (pointer: fine) {
-      flex: 3;
-    }
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
   }
 
+  &:hover ${Toolbar} {
+    visibility: visible;
+  }
   &:hover ${UpdateButton} {
-    @media (min-width: 1024px) {
-      visibility: visible;
-      opacity: 0.9;
-    }
+    visibility: visible;
+    opacity: 0.9;
   }
   &:hover ${Controls} {
-    @media (min-width: 1024px) {
-      visibility: visible;
-    }
+    visibility: visible;
+  }
+
+  &:hover ${TaskValue} {
+    width: 100%;
+    transition: all 1s ease;
+    display: -webkit-box;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: vertical;
+  }
+
+  &:hover ${Flex} {
+    flex-direction: column;
   }
 `;
 

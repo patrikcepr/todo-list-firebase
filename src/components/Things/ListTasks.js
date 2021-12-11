@@ -1,19 +1,18 @@
 import React, { useContext } from 'react';
 
+import Toolbar from '../UI/Toolbar/Toolbar';
+import TaskValue from './TaskValue';
+import Flex from '../UI/Flex/Flex';
+
 import Task from './Task';
-import UpdateButton from '../UI/Button/UpdateButton';
-import Icon from '../UI/Icon/Icon';
-import IconImage from '../UI/Icon/IconImage';
-import Controls from '../UI/Button/Controls';
+// import UpdateButton from '../UI/Button/UpdateButton';
+// import Icon from '../UI/Icon/Icon';
+// import IconImage from '../UI/Icon/IconImage';
+// import Controls from '../UI/Button/Controls';
 
 import AppContext from '../../store/app-context';
 
 import styled from 'styled-components';
-
-import deleteImage from '../../assets/delete.png';
-import checkedImageOff from '../../assets/check_off.png';
-import checkedImageOn from '../../assets/check_on.png';
-import editImage from '../../assets/editing.png';
 
 const List = styled.ul`
   list-style: none;
@@ -27,49 +26,14 @@ const List = styled.ul`
   }
 `;
 
-const Flex = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  @media (min-width: 768px) {
-    justify-content: space-between;
-  }
-`;
-
 const ListTasks = (props) => {
   const ctx = useContext(AppContext);
-  // const reversedTasks = [...props.tasks].reverse();
   const tasks = props.tasks.map(({ task, id, complete }) => {
     return (
       <Task key={id} complete={complete} theme={ctx.theme}>
         <Flex>
-          {task}
-          <Controls>
-            <UpdateButton
-              visible={complete}
-              onClick={ctx.onChangeComplete.bind(null, id, complete)}
-            >
-              <Icon>
-                <IconImage
-                  theme={ctx.theme}
-                  src={complete ? checkedImageOn : checkedImageOff}
-                  alt='Completed'
-                />
-              </Icon>
-            </UpdateButton>
-            <UpdateButton onClick={ctx.onShowTask.bind(null, task, id)}>
-              <Icon>
-                <IconImage theme={ctx.theme} src={editImage} alt='Edit' />
-              </Icon>
-            </UpdateButton>
-            <UpdateButton onClick={ctx.onDelete.bind(null, id)}>
-              <Icon>
-                <IconImage theme={ctx.theme} src={deleteImage} alt='Delete' />
-              </Icon>
-            </UpdateButton>
-          </Controls>
+          <TaskValue>{task}</TaskValue>
+          <Toolbar task={task} id={id} complete={complete} />
         </Flex>
       </Task>
     );
